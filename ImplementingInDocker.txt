@@ -7,10 +7,11 @@ Follow the steps to run in docker.
 3- Build the package using ~mvn clean package -DskipTests`.
 4- Open Docker in the terminal, build the image of spring boot using as `docker build -t <nameOfImage>`
 5- Pull the Postgres image from public docker hub as `docker pull postgres`
-6- Check if any process is running in 8082 (spring-boot) and 5437 (postgres)
-7- If No, link them into docker network with the command : `docker run -d --name my-postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:5432 postgres`
-8- Use command : `docker logs postgres-container` to check if sprint-boot application started or not.
-9- Use any API platform to send deal request (POST) to http://localhost:8082/deals/add. 
+6- Check if any process is running in 8082 (spring-boot) and 5437 (postgres) as : `sudo lsof -t -i:5432`
+7- If No, run the postgre image as : `docker run -d --name my-postgres10 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=DealRequestTable -p 5432:5432 postgres`
+8- Link postgre and spring boot project as : docker run -d --name spring-boot-container-final --link my-postgres-final:postgres -p 8082:8082 springimage
+9- Use command : `docker logs postgres-container` to check if sprint-boot application started or not.
+10- Use any API platform to send deal request (POST) to http://localhost:8082/deals/add. 
    SAMPLE RESPONSE BODY: {
     "dealUniqueId": 123,
     "fromCurrencyIsoCode": "",
@@ -19,5 +20,5 @@ Follow the steps to run in docker.
     "dealAmount": 100.00
 }
 
-10. Check logs from `docker logs postgres-container`.
+12. Check logs from `docker logs postgres-container`.
 
