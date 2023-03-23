@@ -4,7 +4,7 @@ Follow the steps to run in docker.
 
 1- Download zip of project.
 2- Extract zip and cd ClususInformationSystem.
-3- Build the package using ~mvn clean package -DskipTests`.
+3- Build the package using `mvn clean package -DskipTests`.
 4- Open Docker in the terminal, build the image of spring boot using as `docker build -t <nameOfImage>`
 5- Pull the Postgres image from public docker hub as `docker pull postgres`
 6- Check if any process is running in 8082 (spring-boot) and 5437 (postgres) as : `sudo lsof -t -i:5432`
